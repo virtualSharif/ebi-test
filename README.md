@@ -1,20 +1,20 @@
-##Documentation:
+Documentation:
 
 	Project name : Transcript Analyzer
 	Days took to build : Approximately 2days.
 ------------------------------------------------------------------------------------------------------------------------
-######Steps to run the project:
+Steps to run the project:
 
 	Please refer run-readme.md file.
 ------------------------------------------------------------------------------------------------------------------------
-######Project Modules :
+Project Modules :
 
 	This project consists of two major parts :
 	a. Backend - RESTful api's build in Java Spring framework.
 	b. Front-end - Single Page Application using Angular.
 ------------------------------------------------------------------------------------------------------------------------
 
-######Project architectural points:
+Project architectural points:
 
 	Points regarding the development phase:
 
@@ -30,7 +30,7 @@
 	In this project DTO are used to send as response object from rest controller.
 
 ------------------------------------------------------------------------------------------------------------------------
-######iii. RESTful API design :
+iii. RESTful API design :
 
 	Backend consists following restful apis i.e.
 
@@ -38,22 +38,22 @@
 	b. /api/v1/transcripts/hgvs - used for HGSV notation string.
 
 ------------------------------------------------------------------------------------------------------------------------
-######iv. Exception Handler via Aspect :
+iv. Exception Handler via Aspect :
 
 	Added aspect for exception handling at rest layer and send appropriate http status and error messages.
 
 ------------------------------------------------------------------------------------------------------------------------
-######v. Plugins used :
+v. Plugins used :
 
 	Lombok : https://projectlombok.org/
 
 ------------------------------------------------------------------------------------------------------------------------
-######vi. Unit tests:
+vi. Unit tests:
 
 	Unit test written using spring boot test context and only exception thrown use cases.
 
 ------------------------------------------------------------------------------------------------------------------------
-######vii. Front-end :
+vii. Front-end :
 
 	Single page application : Used Angular. Directory the source files are src/main/resources/frontend
 	For the time being, all the source code is in same project later we can have different project for frontend.
@@ -61,14 +61,14 @@
 	we can also run the frontend on any server, for development I have configured backend to accept all the request from localhost:4200 where the frontend was running while I code.
 
 ------------------------------------------------------------------------------------------------------------------------
-######viii. Documentation for RESTful apis:
+viii. Documentation for RESTful apis:
 
 	Swagger : http://swagger.io/
 	I’ve added swagger framework for testing the apis.
 	you can find it http://localhost:8080/swagger or http://localhost:8080/swagger-ui.html
 
 ------------------------------------------------------------------------------------------------------------------------
-######ix. Comments :
+ix. Comments :
 
 	Entire code styling is influenced by Clean Code principle - Robert Martin
 	Which says
@@ -79,7 +79,7 @@
 	However, if you need comments on each file. I can do that too.
 
 ------------------------------------------------------------------------------------------------------------------------
-######x. Design principles used in Project :
+x. Design principles used in Project :
 
 	a. SOLID (single responsibility, open-closed, Liskov subsitution, interface segragation, dependency inversion) principle,
 	b. Composition over inheritance,
@@ -89,7 +89,7 @@
 	f. and some experience principle ;)
 
 ------------------------------------------------------------------------------------------------------------------------
-######xi. Area of improvements :
+xi. Area of improvements :
 
 	a. Angular :
 	There are lot of stuffs which we can add auth gaurd(as of now, no user is in system so no authentication or authorization is required to access transcript page),
@@ -103,7 +103,7 @@
 	Hence, so removing extra overheads for the time being I have chosen hgsvNotation as request param.
 
 ------------------------------------------------------------------------------------------------------------------------
-###Testing (automation) and Test cases with TDD approach:
+Testing (automation) and Test cases with TDD approach:
 
 	a. I have written only exception thrown unit test case we can also write the positive test cases in future.
 
