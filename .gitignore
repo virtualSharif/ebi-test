@@ -1,0 +1,29 @@
+# macOS files
+.DS_Store
+Thumbs.db
+
+# eclipse files
+.classpath
+.project
+.settings
+.springBeans
+*.launch
+
+# idea files 
+.idea
+*.ipr
+*.iml
+
+# maven target dir
+target
+
+#test output dir
+test-output
+
+# dependencies
+/node_modules
+
+node
+
+.factorypath
+/.apt_generated/
