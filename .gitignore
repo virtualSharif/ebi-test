@@ -17,13 +17,8 @@ Thumbs.db
 # maven target dir
 target
 
-#test output dir
-test-output
 
 # dependencies
 /node_modules
 
 node
-
-.factorypath
-/.apt_generated/
