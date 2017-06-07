@@ -1,10 +1,10 @@
 
-#Steps to run the project :
+Steps to run the project :
 
 	This project is java maven project so once you unzip the directory.  Please follow the below steps:
 
 -----------------------------------------------------------------------------------------------------------------------
-######Step 1. Open terminal and goto the basediretory :
+Step 1. Open terminal and goto the basediretory :
 
 	cd /path/to/project/ebi-test
 
@@ -20,7 +20,7 @@ You will get the following structure:
 	target
 
 ------------------------------------------------------------------------------------------------------------------------
-######Step 2.
+Step 2.
 
 a. Using Java :
 
@@ -46,7 +46,7 @@ Last line on the terminal will look like similar to the below line :
 	INFO 28729 --- [           main] uk.ac.ebi.app.WebApplication                : Started WebApplication in 4.232 seconds (JVM running for 119.576)
 
 ------------------------------------------------------------------------------------------------------------------------
-######Step 3. to check whether REST APIs of application is working or not. Open browser and go to below url:
+Step 3. to check whether REST APIs of application is working or not. Open browser and go to below url:
 
 	http://localhost:8080/api/v1/hello
 
@@ -55,9 +55,9 @@ You will get below text as response.
 
 	Hello Engineer @ EBI
 
-######Hurray! Application is ready to use.
+Hurray! Application is ready to use.
 ------------------------------------------------------------------------------------------------------------------------
-######Step 4: to check the front-end of web application with the perspective of end user. Open browser and go to below url:
+Step 4: to check the front-end of web application with the perspective of end user. Open browser and go to below url:
 
 	http://localhost:8080
 
@@ -65,12 +65,12 @@ You will get below text as response.
 	The above link will redirect to analysis page where you need to put input in the text field and press search button or hit enter.
 ------------------------------------------------------------------------------------------------------------------------
 
-######Step 5 : To check, the REST apis of web application. Open browser and go to below url :
+Step 5 : To check, the REST apis of web application. Open browser and go to below url :
 
 	 http://localhost:8080/s or  http://localhost:8080/swagger or http://localhost:8080/swagger-ui.html
 
 ------------------------------------------------------------------------------------------------------------------------
-######Step 6 : To run the test of the application :
+Step 6 : To run the test of the application :
 a. First stop the application(assuming you were already running the application using above steps) using following keys :
 
 	ctrl+c
@@ -79,7 +79,7 @@ b. As this project is Maven project. If you run project using maven commands, te
 
 	mvn clean install spring-boot:run
 
-######Output :
+Output :
 
 This command also builds the project and runs test cases and followed by start the web application too.
 
