@@ -20,5 +20,10 @@ target
 
 # dependencies
 /node_modules
+src/main/resources/frontend/node_modules/
 
 node
+node
+
+.factorypath
+/.apt_generated/
