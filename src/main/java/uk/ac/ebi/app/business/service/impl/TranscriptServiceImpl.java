@@ -29,7 +29,8 @@ public class TranscriptServiceImpl implements TranscriptService {
 	public List<TranscriptDTO> find(String symbol, Integer position, String aminoAcidLetter) {
 
 		GeneMinDTO geneMinDTO = findGene(symbol);
-		List<SequenceDTO> sequenceDTOs = findSequences(geneMinDTO.getId(), SequenceType.PROTEIN, EbiConstants.MULTIPLE_SEQUENCE);
+		List<SequenceDTO> sequenceDTOs = findSequences(geneMinDTO.getId(), SequenceType.PROTEIN,
+				EbiConstants.MULTIPLE_SEQUENCE);
 		List<String> filteredSequenceIds = filterSequences(sequenceDTOs, position, aminoAcidLetter);
 		List<TranscriptDTO> transcriptDTOs = filterTranscripts(geneMinDTO.getTranscriptDTOs(), filteredSequenceIds);
 		return transcriptDTOs;
@@ -53,16 +54,16 @@ public class TranscriptServiceImpl implements TranscriptService {
 
 		return sequenceDTOs.stream()
 				.filter(p -> isPositionExists(position, p) && isCharMatching(aminoAcidLetter, position, p))
-				.map(SequenceDTO::getId)
-				.collect(Collectors.toList());
+				.map(SequenceDTO::getId).collect(Collectors.toList());
 	}
 
 	private List<SequenceDTO> findSequences(String id, SequenceType sequenceType, Boolean multipleSequence) {
 
 		try {
 			RestTemplate restTemplate = new RestTemplate();
-			SequenceDTO[] sequenceDTOs = restTemplate.getForObject(EbiConstants.URL_FOR_SEQUENCE_WITH_TYPE_AND_MULTIPLE_SEQUENCES,
-					SequenceDTO[].class, id, sequenceType.getValue(), multipleSequence);
+			SequenceDTO[] sequenceDTOs = restTemplate.getForObject(
+					EbiConstants.URL_FOR_SEQUENCE_WITH_TYPE_AND_MULTIPLE_SEQUENCES, SequenceDTO[].class, id,
+					sequenceType.getValue(), multipleSequence);
 			return Arrays.asList(sequenceDTOs);
 		} catch (RuntimeException re) {
 			logger.error(re.getMessage());
@@ -84,7 +85,7 @@ public class TranscriptServiceImpl implements TranscriptService {
 
 	private boolean isCharMatching(String aminoAcidLetter, Integer position, SequenceDTO sequenceDTO) {
 
-		return aminoAcidLetter.charAt(0) == sequenceDTO.getSeq().charAt(position - 1);
+		return aminoAcidLetter.indexOf(sequenceDTO.getSeq().charAt(position - 1)) >= 0;
 	}
 
 	private boolean isPositionExists(Integer position, SequenceDTO p) {
