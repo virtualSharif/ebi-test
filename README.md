@@ -18,13 +18,13 @@ Project architectural points:
 
 	Points regarding the development phase:
 
-######i. Modularise :
+i. Modularise :
 
 	For the time being I have modularise the project on package level.
 	Later we can also modularise in maven modules.
 
 ------------------------------------------------------------------------------------------------------------------------
-######ii. DTO :
+ii. DTO :
 
 	It stands for Data Transfer Object.
 	In this project DTO are used to send as response object from rest controller.
