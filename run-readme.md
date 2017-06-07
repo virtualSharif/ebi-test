@@ -28,7 +28,7 @@ You must to have java installed on your machine :
 	If java is not installed, use  https://www.java.com/en/download/help/download_options.xml to install.
 	If java is already installed :
 
-	java -jar target/test-0.0.1-SNAPSHOT.jar
+	java -jar target/ebi-test-0.0.1-SNAPSHOT.jar
 
 OR
 

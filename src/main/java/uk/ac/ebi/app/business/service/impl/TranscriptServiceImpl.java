@@ -16,6 +16,7 @@ import uk.ac.ebi.app.business.dto.TranscriptDTO;
 import uk.ac.ebi.app.business.enums.ErrorCodes;
 import uk.ac.ebi.app.business.enums.SequenceType;
 import uk.ac.ebi.app.business.service.TranscriptService;
+import uk.ac.ebi.app.business.util.EbiConstants;
 import uk.ac.ebi.app.business.util.HGSV;
 import uk.ac.ebi.app.rest.exception.BadRequestException;
 
@@ -23,15 +24,12 @@ import uk.ac.ebi.app.rest.exception.BadRequestException;
 public class TranscriptServiceImpl implements TranscriptService {
 
 	private static final Logger logger = LoggerFactory.getLogger(HGSV.class);
-	private static final boolean MULTIPLE_SEQUENCE = true;
-	private static final String URL_FOR_SEQUENCE_WITH_TYPE_AND_MULTIPLE_SEQUENCES = "http://rest.ensembl.org/sequence/id/{id}?type={type}&multiple_sequences={multipleSequence}";
-	private static final String URL_FOR_LOOKUP_HOMO_SAPIENS_SYMBOL = "http://rest.ensembl.org/lookup/symbol/homo_sapiens/{symbol}?expand=1";
 
 	@Override
 	public List<TranscriptDTO> find(String symbol, Integer position, String aminoAcidLetter) {
 
 		GeneMinDTO geneMinDTO = findGene(symbol);
-		List<SequenceDTO> sequenceDTOs = findSequences(geneMinDTO.getId(), SequenceType.PROTEIN, MULTIPLE_SEQUENCE);
+		List<SequenceDTO> sequenceDTOs = findSequences(geneMinDTO.getId(), SequenceType.PROTEIN, EbiConstants.MULTIPLE_SEQUENCE);
 		List<String> filteredSequenceIds = filterSequences(sequenceDTOs, position, aminoAcidLetter);
 		List<TranscriptDTO> transcriptDTOs = filterTranscripts(geneMinDTO.getTranscriptDTOs(), filteredSequenceIds);
 		return transcriptDTOs;
@@ -63,7 +61,7 @@ public class TranscriptServiceImpl implements TranscriptService {
 
 		try {
 			RestTemplate restTemplate = new RestTemplate();
-			SequenceDTO[] sequenceDTOs = restTemplate.getForObject(URL_FOR_SEQUENCE_WITH_TYPE_AND_MULTIPLE_SEQUENCES,
+			SequenceDTO[] sequenceDTOs = restTemplate.getForObject(EbiConstants.URL_FOR_SEQUENCE_WITH_TYPE_AND_MULTIPLE_SEQUENCES,
 					SequenceDTO[].class, id, sequenceType.getValue(), multipleSequence);
 			return Arrays.asList(sequenceDTOs);
 		} catch (RuntimeException re) {
@@ -77,7 +75,7 @@ public class TranscriptServiceImpl implements TranscriptService {
 
 		try {
 			RestTemplate restTemplate = new RestTemplate();
-			return restTemplate.getForObject(URL_FOR_LOOKUP_HOMO_SAPIENS_SYMBOL, GeneMinDTO.class, symbol);
+			return restTemplate.getForObject(EbiConstants.URL_FOR_LOOKUP_HOMO_SAPIENS_SYMBOL, GeneMinDTO.class, symbol);
 		} catch (RuntimeException re) {
 			logger.error(re.getMessage());
 			throw new BadRequestException(new StatusDTO(ErrorCodes.REST_EXCEPTION_AT_ENSEMBL));
@@ -91,7 +89,7 @@ public class TranscriptServiceImpl implements TranscriptService {
 
 	private boolean isPositionExists(Integer position, SequenceDTO p) {
 
-		return p.getSeq().length() > position - 1;
+		return p.getSeq().length() >= position;
 	}
 
 }

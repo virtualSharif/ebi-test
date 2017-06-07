@@ -16,8 +16,6 @@ public class HGSV {
 
 	private static final Logger logger = LoggerFactory.getLogger(HGSV.class);
 
-	private static final String REGULAR_EXPRESSION_HGSV = "(\\w+)\\.(\\w+):([a-zA-Z]+)(\\d+)([a-zA-Z]+)";
-
 	private String symbol;
 
 	private String aminoAcidLetter;
@@ -26,7 +24,7 @@ public class HGSV {
 
 	public HGSV(String hgsvNotation) {
 
-		Pattern pattern = Pattern.compile(REGULAR_EXPRESSION_HGSV);
+		Pattern pattern = Pattern.compile(EbiConstants.REGULAR_EXPRESSION_HGSV);
 		Matcher matcher = pattern.matcher(hgsvNotation);
 		if (matcher.matches()) {
 			this.symbol = matcher.group(1);
