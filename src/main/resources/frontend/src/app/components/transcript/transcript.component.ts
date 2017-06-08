@@ -30,8 +30,7 @@ export class TranscriptComponent implements OnInit {
                     this.transcripts = data;
                 },
                 error => {
-                    this.contentText = this.handleError(error);
-                    this.isLoading = false;
+                    this.handleError(error);
                 });
         }
         else {
@@ -48,8 +47,7 @@ export class TranscriptComponent implements OnInit {
                     this.transcripts = data;
                 },
                 error => {
-                    this.contentText = this.handleError(error);
-                    this.isLoading = false;
+                    this.handleError(error);
                 });
         }
         else {
@@ -77,23 +75,24 @@ export class TranscriptComponent implements OnInit {
 
     private showLoading() {
         this.isLoading = true;
-        this.contentText = "Loading...";
+        this.contentText = '';
     }
 
     private handleInvalidInputField() {
-        this.contentText = "Please check input field(s)"
+        this.contentText = 'Please check input field(s)';
     }
 
     private nonNull(inputString: string): boolean {
         return (typeof inputString != 'undefined' && inputString) ? true : false;
     }
 
-    private handleError(error: Response | any): string {
+    private handleError(error: Response | any) {
         let errorBody = error.json();
         let message = 'Unknown exception occurred';
         if (errorBody.message) {
             message = errorBody.message;
         }
-        return message;
+        this.contentText = message;
+        this.isLoading = false;
     }
 }

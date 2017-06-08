@@ -106,7 +106,7 @@
 				<artifactId>frontend-maven-plugin</artifactId>
 				<version>${frontend-maven-plugin.version}</version>
 				<configuration>
-					<nodeVersion>v7.5.0</nodeVersion>
+					<nodeVersion>v8.0.0</nodeVersion>
 					<workingDirectory>src/main/resources/frontend/</workingDirectory>
 				</configuration>
 				<executions>

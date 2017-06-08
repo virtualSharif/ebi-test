@@ -21,9 +21,10 @@ target
 # dependencies
 /node_modules
 src/main/resources/frontend/node_modules/
+src/main/resources/frontend/dist/
 
 node
-node
+src/main/resources/frontend/npm-debug.log
 
 .factorypath
 /.apt_generated/
